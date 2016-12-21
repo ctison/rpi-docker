@@ -8,7 +8,7 @@ URL           := https://storage.googleapis.com/golang
 
 CURL          := curl -L -O # wget
 
-.PHONY: help all build fclean run
+.PHONY: help build fclean run
 
 help:
 	$(info $(usage))
@@ -16,7 +16,7 @@ help:
 define usage
 usage: make COMMAND
 make build                  # build docker image: $(IMAGE_NAME) with tags: $(IMAGE_TAGS)
-make fclean                 # remove $(GOLANG_TAR_GZ) and .dockerignore
+make fclean                 # remove: $(GOLANG_TAR_GZ) and .dockerignore
 make run                    # run docker image: $(IMAGE_NAME)
 endef
 
