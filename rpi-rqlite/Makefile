@@ -22,9 +22,6 @@ endef
 build: $(RQLITE_TAR_GZ) .dockerignore
 	docker build --build-arg RQLITE_TAR_GZ=$(RQLITE_TAR_GZ) $(foreach TAG, $(IMAGE_TAGS),-t $(IMAGE_NAME):$(TAG)) .
 
-run:
-	docker run -it --rm $(IMAGE_NAME)
-
 fclean:
 	rm -f -- $(RQLITE_TAR_GZ) .dockerignore
 
