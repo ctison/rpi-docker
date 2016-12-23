@@ -4,3 +4,4 @@ Tested with [RASPBIAN JESSIE LITE](https://www.raspberrypi.org/downloads/raspbia
 - [[github](https://github.com/chtison/rpi-docker/tree/master/rpi-raspbian)] [[dockerhub](https://hub.docker.com/u/chtison/)] chtison/rpi-raspbian
 - [[github](https://github.com/chtison/rpi-docker/tree/master/rpi-golang)] [[dockerhub](https://hub.docker.com/u/chtison/)] chtison/rpi-golang
 - [[github](https://github.com/chtison/rpi-docker/tree/master/rpi-registry)] [[dockerhub](https://hub.docker.com/u/chtison/)] chtison/rpi-registry
+- [[github](https://github.com/chtison/rpi-docker/tree/master/rpi-rqlite)] [[dockerhub](https://hub.docker.com/u/chtison/)] chtison/rpi-rqlite
