@@ -8,7 +8,7 @@ URL           := https://github.com/rqlite/rqlite/archive
 
 CURL          := curl -L -O # wget
 
-.PHONY: help build fclean
+.PHONY: help build fclean run
 
 help:
 	$(info $(usage))
@@ -17,6 +17,7 @@ define usage
 usage: make COMMAND
 make build                  # build docker image: $(IMAGE_NAME) with tags: $(IMAGE_TAGS)
 make fclean                 # remove: $(RQLITE_TAR_GZ) and .dockerignore
+make run                    # run docker image: $(IMAGE_NAME)
 endef
 
 build: $(RQLITE_TAR_GZ) .dockerignore
@@ -24,6 +25,14 @@ build: $(RQLITE_TAR_GZ) .dockerignore
 
 fclean:
 	rm -f -- $(RQLITE_TAR_GZ) .dockerignore
+
+run:
+	docker run -d                     \
+		--restart=unless-stopped  \
+		--name rqlited            \
+		--publish 4001:4001       \
+		--volume rqlited:/data    \
+		$(IMAGE_NAME)
 
 $(RQLITE_TAR_GZ):
 	$(CURL) $(URL)/$(RQLITE_TAR_GZ)
