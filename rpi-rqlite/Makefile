@@ -1,6 +1,6 @@
-VERSION       := 3.8.0
+VERSION       := 3.9.0
 
-IMAGE_TAGS    := latest $(VERSION) 3.8 3
+IMAGE_TAGS    := latest $(VERSION) 3.9 3
 IMAGE_NAME    := chtison/rpi-rqlite
 
 RQLITE_TAR_GZ := v$(VERSION).tar.gz
