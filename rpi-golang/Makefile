@@ -1,36 +1,28 @@
-VERSION       := 1.7.4
+include ../misc/Makefile
 
-IMAGE_TAGS    := latest $(VERSION) 1.7 1
-IMAGE_NAME    := chtison/rpi-golang
+VERSION    := 1.7.4
+IMAGE_TAGS := latest $(VERSION) 1.7 1
+IMAGE_NAME := chtison/rpi-golang
 
 GOLANG_TAR_GZ := go$(VERSION).linux-armv6l.tar.gz
 URL           := https://storage.googleapis.com/golang
 
-CURL          := curl -L -O # wget
+DOCKER-BUILD-OPTIONS := --build-arg GOLANG_TAR_GZ=$(GOLANG_TAR_GZ)
 
-.PHONY: help build fclean run
-
-help:
-	$(info $(usage))
-	@true
-define usage
-usage: make COMMAND
-make build                  # build docker image: $(IMAGE_NAME) with tags: $(IMAGE_TAGS)
-make fclean                 # remove: $(GOLANG_TAR_GZ) and .dockerignore
-make run                    # run docker image: $(IMAGE_NAME)
+TMP := $(USAGE)
+define USAGE
+$(TMP)
+make fclean           # remove: $(GOLANG_TAR_GZ) and .dockerignore
 endef
 
-build: $(GOLANG_TAR_GZ) .dockerignore
-	docker build --build-arg GOLANG_TAR_GZ=$(GOLANG_TAR_GZ) $(foreach TAG, $(IMAGE_TAGS),-t $(IMAGE_NAME):$(TAG)) .
-
+.PHONY: fclean
 fclean:
 	rm -f -- $(GOLANG_TAR_GZ) .dockerignore
 
-run:
-	docker run -it --rm $(IMAGE_NAME)
+build: $(GOLANG_TAR_GZ) .dockerignore
 
 $(GOLANG_TAR_GZ):
 	$(CURL) $(URL)/$(GOLANG_TAR_GZ)
 
 .dockerignore:
-	echo '*\n!$(GOLANG_TAR_GZ)' > .dockerignore
+	echo "*\n!$(GOLANG_TAR_GZ)" > .dockerignore
