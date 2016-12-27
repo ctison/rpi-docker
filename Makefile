@@ -4,8 +4,8 @@ IMAGES     := \
 		rpi-workspace  \
 		rpi-golang     \
 		rpi-registry   \
-		rpi-aircrack   \
 		rpi-rqlite     \
+		rpi-aircrack   \
 
 .PHONY: help all build push
 
