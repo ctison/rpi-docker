@@ -29,10 +29,10 @@ list:
 
 push:
 	@for REGISTRY in $(REGISTRIES) ; do \
-		for IMAGE in `docker images $(IMAGE_NAME) | awk 'NR>1' | tr -s ' ' | cut -d' ' -f1,2 | tr ' ' ':'` ; do \
-			docker tag $$IMAGE $$REGISTRY/$$IMAGE ; \
-			docker push $$REGISTRY/$$IMAGE        ; \
-			docker rmi $$REGISTRY/$$IMAGE         ; \
+		for IMAGE in `docker images $(IMAGE_NAME) | awk -F' ' '{if (NR>1){print $1":"$2}}'` ; do \
+			[ "$REGISTRY" != "docker.io" ] && docker tag $$IMAGE $$REGISTRY/$$IMAGE ; \
+			docker push $$REGISTRY/$$IMAGE                                          ; \
+			[ "$REGISTRY" != "docker.io" ] && docker rmi $$REGISTRY/$$IMAGE         ; \
 		done ; \
 	done
 
