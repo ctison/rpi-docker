@@ -4,6 +4,7 @@
 IMAGE_TAGS := latest
 IMAGE_NAME := chtison/example
 REGISTRIES := docker.io
+NOT_SIGNED := true
 
 DOCKER-BUILD-OPTIONS :=
 
@@ -29,9 +30,9 @@ list:
 
 push:
 	@for REGISTRY in $(REGISTRIES) ; do \
-		for IMAGE in `docker images $(IMAGE_NAME) | awk -F' ' '{if (NR>1){print $1":"$2}}'` ; do \
+		for IMAGE in `docker images $(IMAGE_NAME) | awk -F' ' '{if (NR>1){print $$1":"$$2}}'` ; do \
 			[ "$REGISTRY" != "docker.io" ] && docker tag $$IMAGE $$REGISTRY/$$IMAGE ; \
-			docker push $$REGISTRY/$$IMAGE                                          ; \
+			docker push --disable-content-trust=$(TRUE) $$REGISTRY/$$IMAGE		; \
 			[ "$REGISTRY" != "docker.io" ] && docker rmi $$REGISTRY/$$IMAGE         ; \
 		done ; \
 	done
