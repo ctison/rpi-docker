@@ -1,4 +1,5 @@
 REGISTRIES := docker.io
+NOT_SIGNED := true
 IMAGES     := \
 		rpi-raspbian   \
 		rpi-workspace  \
@@ -23,13 +24,13 @@ endef
 PWD := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 all:
-	@-cd $(PWD) && for IMG in $(IMAGES) ; do cd $$IMG && make build push REGISTRIES="$(REGISTRIES)" ; cd $(PWD) ; done
+	@-cd $(PWD) && for IMG in $(IMAGES) ; do cd $$IMG && make build push REGISTRIES="$(REGISTRIES)" NOT_SIGNED=$(NOT_SIGNED) ; cd $(PWD) ; done
 
 build:
 	@-cd $(PWD) && for IMG in $(IMAGES) ; do cd $$IMG && make build ; cd $(PWD) ; done
 
 push:
-	@-cd $(PWD) && for IMG in $(IMAGES) ; do cd $$IMG && make push REGISTRIES="$(REGISTRIES)" ; cd $(PWD) ; done
+	@-cd $(PWD) && for IMG in $(IMAGES) ; do cd $$IMG && make push REGISTRIES="$(REGISTRIES)" NOT_SIGNED=$(NOT_SIGNED) ; cd $(PWD) ; done
 
 fclean:
 	@IMGS=`docker images -aq -f 'dangling=true'` ; [ "$$IMGS" ] && docker rmi $$IMGS || true

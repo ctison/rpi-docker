@@ -30,10 +30,10 @@ list:
 
 push:
 	@for REGISTRY in $(REGISTRIES) ; do \
-		for IMAGE in `docker images $(IMAGE_NAME) | awk -F' ' '{if (NR>1){print $$1":"$$2}}'` ; do \
-			[ "$REGISTRY" != "docker.io" ] && docker tag $$IMAGE $$REGISTRY/$$IMAGE ; \
-			docker push --disable-content-trust=$(TRUE) $$REGISTRY/$$IMAGE		; \
-			[ "$REGISTRY" != "docker.io" ] && docker rmi $$REGISTRY/$$IMAGE         ; \
+		for IMAGE in `docker images $(IMAGE_NAME) | awk -F' ' '{if(NR>1){print $$1":"$$2}}'` ; do \
+			[ "$$REGISTRY" != "docker.io" ] && docker tag $$IMAGE $$REGISTRY/$$IMAGE ; \
+			docker push --disable-content-trust=$(NOT_SIGNED) $$REGISTRY/$$IMAGE	  ; \
+			[ "$$REGISTRY" != "docker.io" ] && docker rmi $$REGISTRY/$$IMAGE         ; \
 		done ; \
 	done
 
