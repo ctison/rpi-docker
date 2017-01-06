@@ -25,4 +25,4 @@ $(GOLANG_TAR_GZ):
 	$(CURL) $(URL)/$(GOLANG_TAR_GZ)
 
 .dockerignore:
-	echo "*\n!$(GOLANG_TAR_GZ)" > .dockerignore
+	echo -e '*\n!$(GOLANG_TAR_GZ)' > .dockerignore

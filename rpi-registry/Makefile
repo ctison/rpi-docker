@@ -25,7 +25,7 @@ $(REGISTRY_TAR_GZ):
 	$(CURL) $(URL)/$(REGISTRY_TAR_GZ)
 
 .dockerignore:
-	echo '*\n!$(REGISTRY_TAR_GZ)' > .dockerignore
+	echo -e '*\n!$(REGISTRY_TAR_GZ)' > .dockerignore
 
 override define RUN
 @echo 'https://docs.docker.com/registry/insecure/#/using-self-signed-certificates'

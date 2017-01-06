@@ -38,4 +38,4 @@ $(RQLITE_TAR_GZ):
 	$(CURL) $(URL)/$(RQLITE_TAR_GZ)
 
 .dockerignore:
-	echo '*\n!$(RQLITE_TAR_GZ)' > .dockerignore
+	echo -e '*\n!$(RQLITE_TAR_GZ)' > .dockerignore
