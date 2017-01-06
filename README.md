@@ -8,3 +8,4 @@ Tested with [RASPBIAN JESSIE LITE](https://www.raspberrypi.org/downloads/raspbia
 - [[github](https://github.com/chtison/rpi-docker/tree/master/rpi-rqlite)] [[dockerhub](https://hub.docker.com/r/chtison/rpi-rqlite/)] chtison/rpi-rqlite
 - [[github](https://github.com/chtison/rpi-docker/tree/master/rpi-aircrack)] [[dockerhub](https://hub.docker.com/r/chtison/rpi-aircrack/)] chtison/rpi-aircrack
 - [[github](https://github.com/chtison/rpi-docker/tree/master/rpi-ssh)] [[dockerhub](https://hub.docker.com/r/chtison/rpi-ssh/)] chtison/rpi-ssh
+- [[github](https://github.com/chtison/rpi-docker/tree/master/rpi-nginx)] [[dockerhub](https://hub.docker.com/r/chtison/rpi-nginx/)] chtison/rpi-nginx

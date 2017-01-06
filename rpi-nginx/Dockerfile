@@ -1,4 +1,4 @@
-FROM chtison/rpi-workspace
+FROM chtison/rpi-raspbian
 
 ARG NGINX_TAR_GZ
 
