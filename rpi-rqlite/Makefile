@@ -1,7 +1,6 @@
 include ../misc/Makefile
 
 VERSION       := 3.9.1
-IMAGE_TAGS    := latest $(VERSION) 3.9 3
 IMAGE_NAME    := chtison/rpi-rqlite
 
 RQLITE_TAR_GZ := v$(VERSION).tar.gz

@@ -7,6 +7,9 @@ IMAGES     := \
 		rpi-registry   \
 		rpi-rqlite     \
 		rpi-aircrack   \
+		rpi-ssh        \
+		rpi-nginx      \
+		rpi-avahi      \
 
 .PHONY: help all build push
 
@@ -24,13 +27,30 @@ endef
 PWD := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 all:
-	@-cd $(PWD) && for IMG in $(IMAGES) ; do cd $$IMG && make build push REGISTRIES="$(REGISTRIES)" NOT_SIGNED=$(NOT_SIGNED) ; cd $(PWD) ; done
+	@-cd $(PWD) && for IMG in $(IMAGES) ; do \
+		cd $$IMG                                                            && \
+		make build push REGISTRIES="$(REGISTRIES)" NOT_SIGNED=$(NOT_SIGNED)  ; \
+		cd $(PWD)                                                            ; \
+	done
 
 build:
-	@-cd $(PWD) && for IMG in $(IMAGES) ; do cd $$IMG && make build ; cd $(PWD) ; done
+	@-cd $(PWD) && for IMG in $(IMAGES) ; do \
+		cd $$IMG   && \
+		make build  ; \
+		cd $(PWD)   ; \
+	done
 
 push:
-	@-cd $(PWD) && for IMG in $(IMAGES) ; do cd $$IMG && make push REGISTRIES="$(REGISTRIES)" NOT_SIGNED=$(NOT_SIGNED) ; cd $(PWD) ; done
+	@-cd $(PWD) && for IMG in $(IMAGES) ; do \
+		cd $$IMG                                                      && \
+		make push REGISTRIES="$(REGISTRIES)" NOT_SIGNED=$(NOT_SIGNED)  ; \
+		cd $(PWD)                                                      ; \
+	done
 
 fclean:
+	@-cd $(PWD) && for IMG in $(IMAGES) ; do \
+		cd $$IMG    && \
+		make fclean  ; \
+		cd $(PWD)    ; \
+	done
 	@IMGS=`docker images -aq -f 'dangling=true'` ; [ "$$IMGS" ] && docker rmi $$IMGS || true

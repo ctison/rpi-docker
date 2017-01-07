@@ -1,10 +1,13 @@
 # This Makefile is intended to be included in other Makefiles.
 .PHONY: help build list push run
 
-IMAGE_TAGS := latest
 IMAGE_NAME := chtison/example
 REGISTRIES := docker.io
 NOT_SIGNED := true
+IMAGE_TAGS = latest $(shell I=1 ; while true ; do \
+				V=`echo $(VERSION) | rev | cut -d. -f$$I- | rev`    ; \
+				[ "$$V" ] || break                                  ; \
+				echo -n $$V ; ((I++)) ; done )
 
 DOCKER-BUILD-OPTIONS :=
 

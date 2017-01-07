@@ -1,7 +1,6 @@
 include ../misc/Makefile
 
 VERSION    := 7.4
-IMAGE_TAGS := latest $(VERSION) 7
 IMAGE_NAME := chtison/rpi-ssh
 
 SSH_TAR_GZ := openssh-$(VERSION)p1.tar.gz

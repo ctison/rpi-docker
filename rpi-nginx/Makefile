@@ -1,7 +1,6 @@
 include ../misc/Makefile
 
 VERSION    := 1.10.2
-IMAGE_TAGS := latest $(VERSION) 1.10 1
 IMAGE_NAME := chtison/rpi-nginx
 
 NGINX_TAR_GZ := nginx-$(VERSION).tar.gz
