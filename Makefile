@@ -10,6 +10,7 @@ IMAGES     := \
 		rpi-ssh        \
 		rpi-nginx      \
 		rpi-avahi      \
+		rpi-tor        \
 
 .PHONY: help all build push
 

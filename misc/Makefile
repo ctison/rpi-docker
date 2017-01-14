@@ -7,6 +7,7 @@ NOT_SIGNED := true
 IMAGE_TAGS = latest $(shell I=1 ; while true ; do \
 				V=`echo $(VERSION) | rev | cut -d. -f$$I- | rev`    ; \
 				[ "$$V" ] || break                                  ; \
+				[ "$$I" = "1" ] || echo -n " "                      ; \
 				echo -n $$V ; ((I++)) ; done )
 
 DOCKER-BUILD-OPTIONS :=
