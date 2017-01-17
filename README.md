@@ -11,3 +11,4 @@ Tested with [RASPBIAN JESSIE LITE](https://www.raspberrypi.org/downloads/raspbia
 - [[github](https://github.com/chtison/rpi-docker/tree/master/rpi-nginx)] [[dockerhub](https://hub.docker.com/r/chtison/rpi-nginx/)] chtison/rpi-nginx
 - [[github](https://github.com/chtison/rpi-docker/tree/master/rpi-avahi)] [[dockerhub](https://hub.docker.com/r/chtison/rpi-avahi/)] chtison/rpi-avahi
 - [[github](https://github.com/chtison/rpi-docker/tree/master/rpi-tor)] [[dockerhub](https://hub.docker.com/r/chtison/rpi-tor/)] chtison/rpi-tor
+- [[github](https://github.com/chtison/rpi-docker/tree/master/rpi-nmap)] [[dockerhub](https://hub.docker.com/r/chtison/rpi-nmap/)] chtison/rpi-nmap
