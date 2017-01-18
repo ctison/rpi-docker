@@ -4,7 +4,7 @@ VERSION    := 7.4
 IMAGE_NAME := chtison/rpi-ssh
 
 SSH_TAR_GZ := openssh-$(VERSION)p1.tar.gz
-URL        := https://ftp.fr.openbsd.org/pub/OpenBSD/OpenSSH/portable
+URL        := https://mirrors.evowise.com/pub/OpenBSD/OpenSSH/portable
 
 DOCKER-BUILD-OPTIONS := --build-arg SSH_TAR_GZ=$(SSH_TAR_GZ)
 

@@ -11,6 +11,7 @@ IMAGES     := \
 		rpi-nginx      \
 		rpi-avahi      \
 		rpi-tor        \
+		rpi-nmap       \
 
 .PHONY: help all build push
 
