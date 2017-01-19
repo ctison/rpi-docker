@@ -4,14 +4,13 @@ ARG SSH_TAR_GZ
 
 COPY $SSH_TAR_GZ /
 
-RUN mkdir -m 755 /ssh && cd /ssh                    && \
-	tar --strip-components=1 -xzf /$SSH_TAR_GZ  && \
-	rm -f -- /$SSH_TAR_GZ
+WORKDIR /ssh
+
+RUN tar --strip-components=1 -xzf /$SSH_TAR_GZ
 
 RUN mkdir -m 755 /var/empty && useradd -rU -d /var/empty -s /bin/false sshd
 
-RUN cd /ssh                                                           && \
-	apt-get update                                                && \
+RUN	apt-get update                                                && \
 	apt-get install -y gcc libssl-dev make                        && \
 	mkdir -m 755 /usr/local/ssh                                   && \
 	./configure --prefix=/usr/local/ssh                           && \
