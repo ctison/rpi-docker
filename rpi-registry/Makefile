@@ -1,6 +1,6 @@
 include ../misc/Makefile
 
-VERSION    := 2.5.1
+VERSION    := 2.6.0
 IMAGE_NAME := chtison/rpi-registry
 
 REGISTRY_TAR_GZ := v$(VERSION).tar.gz
