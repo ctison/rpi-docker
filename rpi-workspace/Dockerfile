@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y                           \
 		most                                               \
 		tmux                                               \
 		vim                                                \
-	&& git clone https://github.com/chtison/rpi-config.git     \
-	&& rm -f -- .[^.]* && cd rpi-config && make bash tmux vim
+	&& git clone https://github.com/chtison/linux-config.git   \
+	&& rm -f -- .[^.]* && cd linux-config && make bash tmux vim
 
 CMD ["tmux"]
