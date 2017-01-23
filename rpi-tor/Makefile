@@ -1,6 +1,6 @@
 include ../misc/Makefile
 
-VERSION    := 0.2.9.8
+VERSION    := 0.2.9.9
 IMAGE_NAME := chtison/rpi-tor
 
 TOR_TAR_GZ := tor-$(VERSION).tar.gz
