@@ -1,6 +1,6 @@
 include ../misc/Makefile
 
-VERSION    := 1.7.4
+VERSION    := 1.7.5
 IMAGE_NAME := chtison/rpi-golang
 
 GOLANG_TAR_GZ := go$(VERSION).linux-armv6l.tar.gz
