@@ -15,7 +15,7 @@ IMAGES     := \
 		rpi-tor        \
 		rpi-nmap       \
 
-BUILD_ARGS := SQUASH=1
+BUILD_ARGS :=
 PUSH_ARGS  := REGISTRIES="$(REGISTRIES)" NOT_SIGNED=$(NOT_SIGNED)
 
 help:

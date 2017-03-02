@@ -1,4 +1,4 @@
-FROM chtison/rpi-golang
+FROM chtison/rpi-golang:1.7.5
 
 ARG REGISTRY_TAR_GZ
 ARG VERSION
