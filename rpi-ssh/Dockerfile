@@ -14,7 +14,7 @@ RUN useradd -rU -d /var/empty -s /bin/false sshd
 
 RUN apt-get install -y gcc libssl-dev make
 RUN mkdir -m 755 /usr/local/ssh
-RUN ./configure --prefix=/usr/local/ssh && make && make install                                          && \
+RUN ./configure --prefix=/usr/local/ssh && make && make install
 RUN rm -f -- /usr/local/ssh/etc/ssh_host_*
 RUN cp contrib/ssh-copy-id /usr/local/ssh/bin
 RUN chmod 755 /usr/local/ssh/bin/ssh-copy-id
