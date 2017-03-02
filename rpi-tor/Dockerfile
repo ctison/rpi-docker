@@ -4,18 +4,11 @@ ARG TOR_TAR_GZ
 
 COPY $TOR_TAR_GZ /
 
-RUN mkdir /tor && cd /tor                                       && \
-	tar --strip-components=1 -xzf /$TOR_TAR_GZ              && \
-	apt-get update                                          && \
-	apt-get install -y clang libevent-dev libssl-dev make   && \
-	./configure                                             && \
-	make                                                    && \
-	make install                                            && \
-	apt-get purge -y clang libssl-dev make                  && \
-	apt-get autoclean -y                                    && \ 
-	apt-get autoremove -y                                   && \ 
-	apt-get clean                                           && \ 
-	rm -rf -- /var/lib/apt/lists/*
+RUN mkdir -m 755 /tor
+WORKDIR /tor
+RUN tar --strip-components=1 -xzf /$TOR_TAR_GZ
+RUN apt-get install -y clang libevent-dev libssl-dev make
+RUN ./configure && make && make install
 
 EXPOSE 9050
 CMD ["tor"]
