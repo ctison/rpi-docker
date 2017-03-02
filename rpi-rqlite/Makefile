@@ -6,7 +6,7 @@ IMAGE_NAME    := chtison/rpi-rqlite
 RQLITE_TAR_GZ := v$(VERSION).tar.gz
 URL           := https://github.com/rqlite/rqlite/archive
 
-DOCKER-BUILD-OPTIONS := --build-arg RQLITE_TAR_GZ=$(RQLITE_TAR_GZ)
+DOCKER_BUILD_OPTIONS := --build-arg RQLITE_TAR_GZ=$(RQLITE_TAR_GZ)
 
 TMP := $(USAGE)
 define USAGE

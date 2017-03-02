@@ -6,7 +6,7 @@ IMAGE_NAME := chtison/rpi-nginx
 NGINX_TAR_GZ := nginx-$(VERSION).tar.gz
 URL          := https://nginx.org/download
 
-DOCKER-BUILD-OPTIONS := --build-arg NGINX_TAR_GZ=$(NGINX_TAR_GZ)
+DOCKER_BUILD_OPTIONS := --build-arg NGINX_TAR_GZ=$(NGINX_TAR_GZ)
 
 TMP := $(USAGE)
 define USAGE

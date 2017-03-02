@@ -6,7 +6,7 @@ IMAGE_NAME := chtison/rpi-ssh
 SSH_TAR_GZ := openssh-$(VERSION)p1.tar.gz
 URL        := https://mirrors.evowise.com/pub/OpenBSD/OpenSSH/portable
 
-DOCKER-BUILD-OPTIONS := --build-arg SSH_TAR_GZ=$(SSH_TAR_GZ)
+DOCKER_BUILD_OPTIONS := --build-arg SSH_TAR_GZ=$(SSH_TAR_GZ)
 
 TMP := $(USAGE)
 define USAGE

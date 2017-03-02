@@ -6,7 +6,7 @@ IMAGE_NAME := chtison/rpi-golang
 GOLANG_TAR_GZ := go$(VERSION).linux-armv6l.tar.gz
 URL           := https://storage.googleapis.com/golang
 
-DOCKER-BUILD-OPTIONS := --build-arg GOLANG_TAR_GZ=$(GOLANG_TAR_GZ)
+DOCKER_BUILD_OPTIONS := --build-arg GOLANG_TAR_GZ=$(GOLANG_TAR_GZ)
 
 TMP := $(USAGE)
 define USAGE

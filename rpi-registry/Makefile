@@ -6,7 +6,7 @@ IMAGE_NAME := chtison/rpi-registry
 REGISTRY_TAR_GZ := v$(VERSION).tar.gz
 URL             := https://github.com/docker/distribution/archive
 
-DOCKER-BUILD-OPTIONS := --build-arg REGISTRY_TAR_GZ=$(REGISTRY_TAR_GZ) --build-arg VERSION=$(VERSION)
+DOCKER_BUILD_OPTIONS := --build-arg REGISTRY_TAR_GZ=$(REGISTRY_TAR_GZ) --build-arg VERSION=$(VERSION)
 
 TMP := $(USAGE)
 define USAGE

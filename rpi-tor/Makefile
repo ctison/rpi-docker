@@ -6,7 +6,7 @@ IMAGE_NAME := chtison/rpi-tor
 TOR_TAR_GZ := tor-$(VERSION).tar.gz
 URL        := https://www.torproject.org/dist
 
-DOCKER-BUILD-OPTIONS := --build-arg TOR_TAR_GZ=$(TOR_TAR_GZ)
+DOCKER_BUILD_OPTIONS := --build-arg TOR_TAR_GZ=$(TOR_TAR_GZ)
 
 TMP := $(USAGE)
 define USAGE

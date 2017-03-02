@@ -6,7 +6,7 @@ IMAGE_NAME := chtison/rpi-nmap
 NMAP_TAR_GZ := nmap-$(VERSION).tgz
 URL         := https://nmap.org/dist
 
-DOCKER-BUILD-OPTIONS := --build-arg NMAP_TAR_GZ=$(NMAP_TAR_GZ)
+DOCKER_BUILD_OPTIONS := --build-arg NMAP_TAR_GZ=$(NMAP_TAR_GZ)
 
 TMP := $(USAGE)
 define USAGE

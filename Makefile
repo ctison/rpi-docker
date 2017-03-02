@@ -1,3 +1,5 @@
+.PHONY: help all build push
+
 REGISTRIES := docker.io
 NOT_SIGNED := true
 IMAGES     := \
@@ -13,7 +15,8 @@ IMAGES     := \
 		rpi-tor        \
 		rpi-nmap       \
 
-.PHONY: help all build push
+BUILD_ARGS := SQUASH=1
+PUSH_ARGS  := REGISTRIES="$(REGISTRIES)" NOT_SIGNED=$(NOT_SIGNED)
 
 help:
 	$(info $(USAGE))
@@ -29,30 +32,22 @@ endef
 PWD := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 all:
-	@-cd $(PWD) && for IMG in $(IMAGES) ; do \
-		cd $$IMG                                                                        && \
-		$(MAKE) build push REGISTRIES="$(REGISTRIES)" SQUASH=1 NOT_SIGNED=$(NOT_SIGNED)  ; \
-		cd $(PWD)                                                                        ; \
+	@- for IMG in $(IMAGES) ; do \
+		cd $(PWD)/$$IMG && $(MAKE) build push $(BUILD_ARGS) $(PUSH_ARGS) ; \
 	done
 
 build:
-	@-cd $(PWD) && for IMG in $(IMAGES) ; do \
-		cd $$IMG      && \
-		$(MAKE) build  ; \
-		cd $(PWD)      ; \
+	@- for IMG in $(IMAGES) ; do \
+		cd $(PWD)/$$IMG && $(MAKE) build $(BUILD_ARGS) ; \
 	done
 
 push:
 	@-cd $(PWD) && for IMG in $(IMAGES) ; do \
-		cd $$IMG                                                         && \
-		$(MAKE) push REGISTRIES="$(REGISTRIES)" NOT_SIGNED=$(NOT_SIGNED)  ; \
-		cd $(PWD)                                                         ; \
+		cd $(PWD)/$$IMG && $(MAKE) push $(PUSH_ARGS) ; \
 	done
 
 fclean:
 	@-cd $(PWD) && for IMG in $(IMAGES) ; do \
-		cd $$IMG       && \
-		$(MAKE) fclean  ; \
-		cd $(PWD)       ; \
+		cd $(PWD)/$$IMG && $(MAKE) fclean ; \
 	done
 	@IMGS=`docker images -aq -f 'dangling=true'` ; [ "$$IMGS" ] && docker rmi $$IMGS || true
