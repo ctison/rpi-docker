@@ -10,7 +10,13 @@ IMAGE_TAGS = latest $(shell I=1 ; while true ; do \
 				[ "$$I" = "1" ] || echo -n " "                      ; \
 				echo -n $$V ; ((I++)) ; done )
 
-DOCKER-BUILD-OPTIONS :=
+DOCKER_BUILD_OPTIONS ?=
+
+ifeq '$(shell expr "`docker version -f {{.Client.Version}}`" ">=" "1.13")' '1'
+ifdef SQUASH
+DOCKER_BUILD_OPTIONS += --squash
+endif
+endif
 
 SHELL := /bin/bash
 CURL  := curl -L -O # wget
@@ -27,7 +33,7 @@ make run              # run docker image: $(IMAGE_NAME)
 endef
 
 build:
-	docker build $(DOCKER-BUILD-OPTIONS) $(foreach TAG, $(IMAGE_TAGS),-t $(IMAGE_NAME):$(TAG)) .
+	docker build $(DOCKER_BUILD_OPTIONS) $(foreach TAG, $(IMAGE_TAGS),-t $(IMAGE_NAME):$(TAG)) .
 
 list:
 	docker images $(IMAGE_NAME)

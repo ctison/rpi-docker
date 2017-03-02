@@ -30,9 +30,9 @@ PWD := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 all:
 	@-cd $(PWD) && for IMG in $(IMAGES) ; do \
-		cd $$IMG                                                               && \
-		$(MAKE) build push REGISTRIES="$(REGISTRIES)" NOT_SIGNED=$(NOT_SIGNED)  ; \
-		cd $(PWD)                                                               ; \
+		cd $$IMG                                                                        && \
+		$(MAKE) build push REGISTRIES="$(REGISTRIES)" SQUASH=1 NOT_SIGNED=$(NOT_SIGNED)  ; \
+		cd $(PWD)                                                                        ; \
 	done
 
 build:
