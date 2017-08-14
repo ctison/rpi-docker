@@ -27,7 +27,7 @@ $(REGISTRY_TAR_GZ):
 	echo -e '*\n!$(REGISTRY_TAR_GZ)' > .dockerignore
 
 FQDN := $(shell hostname).local
-PORT := 5000
+PORT := 443
 override define RUN
 @echo 'https://docs.docker.com/registry/insecure/#/using-self-signed-certificates'
 @[ `id -u` = 0 ] || (echo '+ root is required to install self signed certificate for docker daemon' && false)
@@ -38,7 +38,7 @@ mkdir -p /etc/docker/certs.d/$(FQDN):$(PORT)/
 cp certs/domain.crt /etc/docker/certs.d/$(FQDN):$(PORT)/ca.crt
 systemctl daemon-reload
 systemctl restart docker
-docker run -d                                                  \
+docker run -d                                              \
 	--restart=unless-stopped                               \
 	--name registry                                        \
 	--publish $(PORT):5000                                 \
